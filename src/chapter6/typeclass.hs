@@ -71,6 +71,7 @@ data EitherOr a b =
 
 instance (Eq a, Eq b) => Eq (EitherOr a b) where
     (==) (Hello _) (Goodbye _) = False
+    (==) (Goodbye _) (Hello _) = False
     (==) (Hello a) (Hello a') = a == a'
     (==) (Goodbye a) (Goodbye a') = a == a'
 
