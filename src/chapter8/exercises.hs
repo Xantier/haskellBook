@@ -22,7 +22,7 @@ dividedBy :: Integer -> Integer -> DivideResult
 dividedBy _ 0 = DividedByZero
 dividedBy num denom = go (abs num) (abs denom) 0 (ind num denom)
     where go n d count ind
-           | n < d = Result(ind *count, n)
+           | n < d = Result(ind * count, n)
            | otherwise = go (n - d) d (count + 1) ind
 
 ind :: Integral a => a -> a -> a
