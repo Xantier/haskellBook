@@ -43,3 +43,19 @@ myElemAny x = any (x==)
 --4.
 myReverse :: [a] -> [a]
 myReverse = foldr (\ x y -> y ++ [x]) []
+
+--5.
+myMap :: (a -> b) -> [a] -> [b]
+myMap f = foldr ((:) . f) []
+
+--6.
+myFilter :: (a -> Bool) -> [a] -> [a]
+myFilter f = foldr (\ x y -> if f x then y ++ [x] else y) []
+
+--7.
+squish :: [[a]] -> [a]
+squish = foldr (++) []
+
+--8.
+squishMap :: (a -> [b]) -> [a] -> [b]
+squishMap f = foldr (\a b -> f a ++ b) []
