@@ -58,4 +58,27 @@ squish = foldr (++) []
 
 --8.
 squishMap :: (a -> [b]) -> [a] -> [b]
-squishMap f = foldr (\a b -> f a ++ b) []
+--squishMap f = foldr (\a b -> f a ++ b) []
+squishMap f = foldr ((++) . f) []
+
+--9.
+squishAgain :: [[a]] -> [a]
+squishAgain = squishMap id
+
+--10.
+myMaximumBy :: (a -> a -> Ordering) -> [a] -> a
+myMaximumBy _ []     = undefined
+myMaximumBy _ [x]    = x
+myMaximumBy f (x:xs) = foldl fo x xs
+  where fo a b
+          | f a b == GT = a
+          | otherwise = b
+
+--11.
+myMinimumBy :: (a -> a -> Ordering) -> [a] -> a
+myMinimumBy _ []     = undefined
+myMinimumBy _ [x]    = x
+myMinimumBy f (x:xs) = foldl fo x xs
+  where fo a b
+          | f a b == GT = b
+          | otherwise = a
