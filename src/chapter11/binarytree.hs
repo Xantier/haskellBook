@@ -52,8 +52,7 @@ testInorder = testBench inorder [1,2,3]
 testPostorder :: IO ()
 testPostorder = testBench postorder [1,3,2]
 
-{-
 foldTree :: (a -> b -> b) -> b -> BinaryTree a -> b
 foldTree _ acc Leaf = acc
-foldTree f acc (Node left a right) = foldr f (foldTree f (foldTree f acc right) left)
--}
+foldTree f acc (Node left a right) = f a (foldTree f (foldTree f acc left) right)
+
